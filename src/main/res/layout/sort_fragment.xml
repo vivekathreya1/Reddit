@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.abbaqus.vivekathreya_reddit.viewmodel.PopularViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_sheet_text_height"
+            android:id="@+id/hotTv"
+            android:text="@string/hot"
+            android:paddingStart="@dimen/bottom_sheet_left_margin"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/hotTv"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_sheet_text_height"
+            android:id="@+id/RisingTv"
+            android:paddingStart="@dimen/bottom_sheet_left_margin"
+            android:gravity="center_vertical"
+            android:text="@string/rising"
+            app:layout_constraintTop_toBottomOf="@+id/hotTv"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewHolder"
+            type="com.abbaqus.vivekathreya_reddit.view.adapter.PopularAdapter.PopularViewHolder" />
+
+
+        <variable
+            name="obj"
+            type="com.abbaqus.vivekathreya_reddit.model.PopularModel" />
+    </data>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@color/white"
+        app:cardElevation="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{obj.title}"
+                android:textSize="@dimen/title_text_size"
+                android:paddingTop="@dimen/title_padding_top"
+                android:layout_marginStart="@dimen/title_start_margin"
+                android:layout_marginEnd="@dimen/title_start_margin"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/subReddit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{obj.subReddit}"
+                android:textSize="@dimen/subredit_size"
+                android:textStyle="bold"
+                android:paddingTop="@dimen/subreddit_padding_top"
+                android:textColor="@android:color/holo_blue_dark"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+            <TextView
+                android:id="@+id/domain"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{obj.domain}"
+                android:textSize="@dimen/domain_size"
+                android:layout_marginStart="@dimen/domain_margin_start"
+                app:layout_constraintStart_toEndOf="@id/subReddit"
+                app:layout_constraintBaseline_toBaselineOf="@+id/subReddit" />
+
+            <TextView
+                android:id="@+id/timeSincePost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{obj.postSince.toString()}"
+                android:textSize="@dimen/subredit_size"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintStart_toEndOf="@+id/domain"
+                android:layout_marginStart="@dimen/domain_margin_start"
+                app:layout_constraintBaseline_toBaselineOf="@+id/subReddit" />
+
+            <TextView
+                android:id="@+id/likes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{obj.likes.toString()}"
+                android:textSize="@dimen/likes_size"
+                android:textStyle="bold"
+                android:textColor="@android:color/holo_green_dark"
+                app:layout_constraintStart_toStartOf="@+id/title"
+                app:layout_constraintTop_toBottomOf="@id/subReddit" />
+
+            <TextView
+                android:id="@+id/comments"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{obj.noOfComments.toString() + ` `+@string/comments}"
+                android:textSize="@dimen/comments_text_size"
+                android:layout_marginStart="@dimen/title_padding_top"
+                app:layout_constraintStart_toEndOf="@+id/likes"
+                app:layout_constraintBaseline_toBaselineOf="@+id/likes" />
+
+            <ImageView
+                android:id="@+id/images"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:layout_marginTop="@dimen/title_padding_top"
+                bind:imageUrl="@{obj.imageUrl}"
+                app:layout_constraintTop_toBottomOf="@+id/comments"
+                android:paddingBottom="10dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_gray"
+                app:layout_constraintTop_toBottomOf="@+id/images"/>
+
+            <ImageView
+                android:id="@+id/favIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_border_black_24dp"
+                android:padding="@dimen/title_padding_top"
+                android:onClick="@{(v)->viewHolder.onClickAddFav(obj)}"
+                android:layout_marginEnd="@dimen/title_padding_top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/images" />
+
+            <ImageView
+                android:id="@+id/shareIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_share_gray_24dp"
+                android:padding="@dimen/title_padding_top"
+                android:onClick="@{(v)->viewHolder.onClickShare(obj)}"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/favIv"
+                app:layout_constraintTop_toTopOf="@+id/favIv"
+                app:layout_constraintBottom_toBottomOf="@+id/favIv"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

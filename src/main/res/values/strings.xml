@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">VivekAthreya_Reddit</string>
+    <string name="popular">Popular</string>
+    <string name="favourites">Favourites</string>
+    <string name="comments">comments</string>
+    <string name="comments_title">Comments</string>
+    <string name="hot">Hot</string>
+    <string name="rising">Rising</string>
+    <string name="comments_Url">Comments url</string>
+    <string name="no_internet">No internet connection. Please check your network connection and try again.</string>
+</resources>
